@@ -1,0 +1,8 @@
+<% content_for :title, "Editing vote" %>
+<h1 style="margin:1%; padding: 2%; text-align: center;">Editing vote</h1>
+<%= render 'form', vote: @vote%> 
+<br>
+<div style= "padding: 0; text-align: center;">
+  <%= link_to "Show", @vote , class: "button button2" %> |
+  <%= link_to "Back", votes_path, class: "button" %>
+</div>

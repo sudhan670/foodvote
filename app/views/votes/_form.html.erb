@@ -1,0 +1,42 @@
+<%= form_with(model: @vote, local: true) do |form| %>
+  <% if @vote.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+      <ul>
+        <% @vote.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h3 style="color: #FFC101; font-family: sans-serif; text-align: center;">
+    Kindly, Do the Voting and Updating Between 9 AM to 1 PM on Tuesday
+  </h3>
+  <div style="margin: 1%; padding: 2%; text-align: center;">
+      <div>
+          <%= form.label :employee_id, "Employee ID" %><br>
+          <%= form.number_field :employee_id, min: 1, max: 200, class: "form-control" %>
+      </div>
+    <div>
+      <h3>Are you a vegetarian?</h3>
+      <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+        <div>
+          <%= form.radio_button :check, 'yes' %>
+          <%= form.label :check, "Yes", value: 'yes' %>
+        </div>
+        <div>
+          <%= form.radio_button :check, 'no' %>
+          <%= form.label :check, "No", value: 'no' %>
+        </div>
+        <div>
+          <%= form.radio_button :check, 'ab' %>
+          <%= form.label :check, "Absent", value: 'ab' %>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <%= form.submit "Submit", style: "width: 50%; padding: 10px 20px; background-color: lightgreen; color: white; border: 2px soild #000; cursor: pointer; border-radius: 4px;" %>
+    </div>
+  </div>
+<% end %>

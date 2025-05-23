@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ * With Propshaft, assets are served efficiently without preprocessing steps.
+ */
+import "@jarstone/dselect/dist/css/dselect.css";
+
+body {
+  background-color: rgb(255, 245, 238);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Buttons */
+.button {
+  background-color:   #007bff;
+  border: 2px solid #000;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+.newvote{
+  margin-left: 14%;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid #000;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+/* Variant buttons */
+.button2 {
+  background-color: #ffc107;
+  padding: 10px 20px; 
+  border: 2px solid #000;
+  border-radius: 4px;
+  color: black;
+}
+
+.button3 {
+  background-color: #f44336;
+  border: 2px solid #000;
+  border-radius: 4px;
+} 
+.button4{
+  background-color: #28a745;
+  justify-content: space-between;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+input[type=text], input[type=number],select{
+  width: 50%;
+  padding: 12px 18px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  align-items: center;
+  box-sizing: border-box;
+}
+input[type=submit]{
+  text-decoration: none;
+  background-color: lightred;
+  curson: pointer;
+} 
+.input{
+  width: 50%;
+  padding: 12px 18px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  align-items: center;
+  box-sizing: border-box;
+} 
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 10px 0;
+}
+
+.pagination a,
+.pagination span.current,
+.pagination span.gap {
+    padding: 0 10px;
+    line-height: 30px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    color: #333;
+    border-radius: 6px;
+}
+.pagination .first,
+.pagination .prev,
+.pagination .page,
+.pagination .next,
+.pagination .last {
+    padding: 10px;
+    border: none;
+    background: none;
+    color: inherit;
+}
+/* Example: stack buttons vertically on small screens */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  table {
+    font-size: 13px;
+    overflow-x: auto;
+  }
+} 
+.text{
+  width: 70%;
+  padding: 20px 24px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  align-items: center;
+  box-sizing: border-box;
+}

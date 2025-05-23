@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vote: one
+  content: MyText
+
+two:
+  vote: two
+  content: MyText

@@ -1,0 +1,131 @@
+<p style="color: green;"><%= notice %></p>
+<% content_for :title, "Votes" %>
+<h1 style="text-align: center;">Food Voting Site</h1>
+<h2 style="text-align: center; color:  #008cba;">Are You a Vegetarian?</h2>
+<h2 style="text-align: center; ">Vote Counting</h2>
+<!-- Voting Logic-->
+<div style=" margin: 2%; padding: 0 5%;">
+<% if voting_open? %>
+   <%= button_to "New Vote", new_vote_path, method: :get, class: "newvote"%> 
+  <p style="text-align: center; color: #f44336; font-weight: 600">Voting is open on Tuesday's from 9:00 AM to 1:00 PM only. You Can Add or Update Your Food Choice.</p>
+
+<% else %>
+  <p style="text-align: center; color: #f44336; font-weight: 400">Voting is closed. Voting is open from 9:00 AM to 1.00 PM In Tuesday Only Thank You Come Again.</p>
+<% end %>
+<div>
+
+<!--Total Count Table -->
+<div style="margin: 0% ; padding: 0 5%;">
+  <table style="border-collapse: collapse; width: 80%; margin: 1% auto; border: 1px solid #000;">
+  <thead style="background-color: lightcoral;">
+    <tr>
+      <% ["Total Count", "Veg Count", "Non-Veg Count", "Absent"].each do |header| %>
+        <th style="text-align: left; padding: 8px; border: 1px solid #000;"><%= header %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #000;"><%= @total_count %></td>
+      <td style="padding: 8px; border: 1px solid #000;"><%= @veg_count %></td>
+      <td style="padding: 8px; border: 1px solid #000;"><%= @non_veg_count %></td>
+      <td style="padding: 8px; border: 1px solid #000;"><%= @absent_count %></td>
+    </tr>
+  </tbody>
+</table>
+<!-- Pagination used to the Kaminari framework inside the ruby-->
+<div class='pagination' style="text-align: center; margin: 2em 0;">
+  <%= paginate @votes, outer_window: 3 %>
+</div>
+
+<!-- Counting Graph-->
+<div id="vote-chart">Loading chart...</div>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    const chartData = {
+      chart: {
+        caption: "Food Vote Breakdown",
+        theme: "fusion",
+        decimals: 0
+      },
+      data: [
+        { label: "Veg", value: <%= @veg_count%> },
+        { label: "Non-Veg", value: <%= @non_veg_count %> },
+        { label: "Absent", value: <%= @absent_count %> },
+      ]
+    };
+
+    new FusionCharts({
+      type: 'doughnut3d',
+      renderAt: "vote-chart",
+      width: "100%",
+      height: "400",
+      dataFormat: "json",
+      dataSource: chartData
+    }).render();
+  });
+</script>
+
+
+<!--Search the employee by id -->
+<div style="margin: 0; padding: 0 10%">
+  <%= form_with url: votes_path, method: :get, local: true do %>
+    <%= label_tag :employee_id, "Search by Employee ID:" %>
+    <%= text_field_tag :employee_id, params[:employee_id], placeholder: "Registered Employee_id Between 1 to 150" %>
+    <%= submit_tag "Search", style: "padding: 14px 20px; background-color: blue; color: white; border: none; cursor: pointer; border-radius: 4px;" %>
+  <% end %>
+
+  <% if params[:employee_id].present? %>
+    <% id = params[:employee_id].to_i %>
+
+    <% if id > 150 %>
+      <p>Registered Employee Must Be Between 1 to 150</p>
+    <% elsif id < 150 && @id.nil? %>
+      <p> Kindly create new Vote </p>
+    <% elsif @employees.present? && @employees.any? %>
+      <% @employees.each do |employee| %>
+        <div>
+          <p>(ID: <%= employee.employee_id %>)</p>
+          <strong>(Food Choice: <%= check(employee.check) %>)</strong>
+        </div>
+        <div style="float:right; margin:0; padding:0;">
+          <%= link_to "Edit", edit_vote_path(employee), class: "button button2" %>
+          <%= link_to "Delete", employee, method: :delete, data: { confirm: "Are you sure?" }, class: "button button3" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- Votes Counting CRUD Operation -->
+<h2 style="text-align: center;">Votes</h2>
+<table style="border-collapse: collapse; width: 80%; margin: 3% auto; border: 1px solid #000;">
+  <thead style="background-color: lightcoral;">
+    <tr>
+      <% ["Employee ID", "Food Choice", "Actions"].each do |header| %>
+        <th style="padding: 8px; border: 1px solid #000;"><%= header %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td style="padding: 8px; border: 1px solid #000;"><%= vote.employee_id %></td>
+        <td style="padding: 8px; border: 1px solid #000;">
+          <%= { 'yes' => 'Veg', 'no' => 'Non-Veg', 'ab' => 'Absent' }[vote.check] %>
+        </td>
+        <td style="padding: 8px; border: 1px solid #000;">
+          <%= link_to "Show", vote_path(vote), class: "button" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div> 
+ <div style="float: left; display: flex; flex-direction: column; gap: 5px;">
+    <%= link_to "Download CSV", export_votes_path, class: "button button2" %>
+</div>
+<div style="float: right; display: flex; flex-direction: column; gap: 5px;">
+  <%= button_to 'Send Report', send_csv_votes_path, method: :post, class: 'button button3' %>
+</div> 
+
