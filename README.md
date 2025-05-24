@@ -45,15 +45,10 @@ bundle install
 rails db:create
 rails db:migrate
 ```
-
-### 4. Initialize Database (Optional)
-
-*Add any seed data or initialization steps here if applicable.*
-
-### 5. Running Tests
+### 4. Running Tests
 
 ```bash
-rails test
+bin/rails test
 ```
 
 ---
@@ -64,7 +59,10 @@ rails test
 
 ---
 
-## Deployment Instructions
+### Outputs 
 
-*Add deployment steps here (e.g., how to start the server, environment variables, any hosting instructions).*
+```bash
+<img src="https://github.com/sudhan670/foodvote/chart.png />
+```
+
 
