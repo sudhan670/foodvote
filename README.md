@@ -62,7 +62,17 @@ bin/rails test
 ### Outputs 
 
 ```bash
-<img src="https://github.com/sudhan670/foodvote/chart.png />
+<img src="https://github.com/sudhan670/foodvote/blob/main/food.png" />
+```
+```bash
+<img src="https://github.com/sudhan670/foodvote/blob/main/chart.png" />
+```
+```bash
+<img src="https://github.com/sudhan670/foodvote/blob/main/new.png" />
+```
+```bash
+<img src="https://github.com/sudhan670/foodvote/blob/main/poll.png" />
 ```
 
+---
 
