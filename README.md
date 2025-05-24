@@ -1,25 +1,76 @@
-# README
+# FoodVote Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README documents the steps to get the **FoodVote** application up and running.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Ruby and Rails Versions
 
-* System dependencies
+* Ruby: 3.4.4
+* Rails: 8.2.0
 
-* Configuration
+---
 
-* Database creation
+## Features
 
-* Database initialization
+* FusionCharts integration for data visualization
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## System Dependencies
 
-* Deployment instructions
+* Ubuntu (or any Linux distro)
+* Git
 
-* ...
-# food-poll
+---
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sudhan670/foodvote.git
+cd foodvote
+```
+
+### 2. Install Dependencies
+
+```bash
+bundle install
+```
+
+### 3. Database Setup
+
+```bash
+rails db:create
+rails db:migrate
+```
+
+### 4. Initialize Database (Optional)
+
+*Add any seed data or initialization steps here if applicable.*
+
+### 5. Running Tests
+
+```bash
+rails test
+```
+
+---
+
+## Services
+
+* Mailer: Csvmailer (generated via `rails generate mailer Csvmailer`)
+
+---
+
+## Deployment Instructions
+
+*Add deployment steps here (e.g., how to start the server, environment variables, any hosting instructions).*
+
+---
+
+If you want, I can help you write detailed deployment instructions or add any missing parts!
+
+
+
