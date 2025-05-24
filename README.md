@@ -68,9 +68,3 @@ rails test
 
 *Add deployment steps here (e.g., how to start the server, environment variables, any hosting instructions).*
 
----
-
-If you want, I can help you write detailed deployment instructions or add any missing parts!
-
-
-
