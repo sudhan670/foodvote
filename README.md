@@ -59,7 +59,7 @@ bin/rails test
 
 ---
 
-### Outputs 
+## Outputs 
 
 
 <img src="https://github.com/sudhan670/foodvote/blob/main/food.png" />
