@@ -82,7 +82,7 @@ class VotesController < ApplicationController
   private
     def voting_open?
       now = Time.zone.now
-      # return false unless now.tuesday?
+      return false unless now.tuesday?
       start_time = now.change(hour: 9, min: 0)
       end_time = now.change(hour: 20, min: 0)
       now >= start_time && now <= end_time
