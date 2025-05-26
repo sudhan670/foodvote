@@ -3,6 +3,11 @@
 This README documents the steps to get the **FoodVote** application up and running.
 
 ---
+# Application Workflow 
+
+* In this food vote application you can vote your desire food option only on Tuesday between 9.00AM to 1.00PM'
+* You can search the food by Employee_id also it registered Bewteen 1 to 150 
+* You send the report by send report and view in Download CSV foramt
 
 ## Ruby and Rails Versions
 
