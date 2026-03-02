@@ -63,7 +63,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "faker", "~> 3.5"
+gem "faker", "~> 3.6"
 gem "kaminari"
 gem "csv"
 gem "sidekiq"
